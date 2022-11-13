@@ -1,0 +1,17 @@
+
+#input-nome-paciente{
+    width: auto;
+}
+
+#form-consultas {
+    width: 100%;
+}
+
+#button-consultas {
+    width: auto;
+    margin-top: 14px;
+}
+
+#placeholder-textarea{
+    width: 100%;
+}
