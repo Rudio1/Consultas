@@ -15,7 +15,8 @@ use App\Http\Controllers\ConsultaController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return 'consulta enviada com sucesso';
+})->name('index');
 
-Route::get('consulta', [ConsultaController::class, 'consulta'])->name('consultas');
+Route::get('consulta', [ConsultaController::class, 'consulta'])->name('consulta');
+Route::post('consulta', [ConsultaController::class, 'salvarConsulta'])->name('teste.consulta');
