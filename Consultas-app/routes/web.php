@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ConsultaController;
+use App\Http\Controllers\PrincipalController;
+use App\Models\Consultas;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +16,13 @@ use App\Http\Controllers\ConsultaController;
 |
 */
 
-Route::get('/', function () {
-    return 'consulta enviada com sucesso';
-})->name('index');
+Route::get('/', function(){
+    return 'a';
+})->name('site.index');
 
-Route::get('consulta', [ConsultaController::class, 'consulta'])->name('consulta');
-Route::post('consulta', [ConsultaController::class, 'salvarConsulta'])->name('teste.consulta');
+Route::get('cadastro', [ConsultaController::class, 'cadastroIndex'])->name('cadastro.index');
+Route::post('cadastro', [ConsultaController::class, 'enviarCadastro'])->name('cadastro.index');
+
+Route::get('consulta', [ConsultaController::class, 'consultaIndex'])->name('consulta.index');
+Route::post('consulta', [ConsultaController::class, 'enviarConsulta'])->name('consulta.index');
+

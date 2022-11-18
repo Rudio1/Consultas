@@ -1,10 +1,76 @@
 
-#input-nome-paciente{
-    width: auto;
+.topo {
+    /* background-color: black; */
+    width: 100%;
+    /* background-color: #f8f8f8; */
+    /* position: absolute; */
+    padding: 20px 0px 10px 0px;
+}
+
+.logo {
+    width: 50px;
+    float: left;
+    margin-left: 40px;
+}
+
+.menu {
+    /* float: right; */
+    display: flex;
+    justify-content: right;
+    margin-right: 40px;
+}
+
+.menu li {
+    display: inline;
+    float: left;
+}
+
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.menu a {
+    text-decoration: none;
+    padding: 14px 16px;
+    color: #333;
+}
+
+.menu a:hover {
+    color: #268fd0;
+}
+
+.conteudo-form{
+    margin: auto;
+}
+
+.content-form {
+    margin-top: 40px;
+    /* display: flex;    */
+    align-items: center ;
+    justify-content: center;
+}
+
+#h1-titulo {
+    margin-top: 10px;
 }
 
 #form-consultas {
-    width: 100%;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    width: auto;
+}
+
+#input-nome-paciente{
+    width: auto;
+}
+    
+#date-form {
+    /* background-color: aliceblue; */
+    width: auto;
 }
 
 #button-consultas {

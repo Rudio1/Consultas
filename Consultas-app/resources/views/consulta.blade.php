@@ -1,12 +1,14 @@
-
+@extends('layouts.basico')
 @section('titulo', $titulo)
-<link rel="stylesheet" href="start.css">
+
+@section('conteudo')
 <body>
 
     <h1 id="h1-titulo">Preenchimento de paciente</h1>
-    @component('form.consulta')
+    @component('form.consulta', ['consulta' =>$consulta])
     @endcomponent
     
     
 </body>
 </html>
+@endsection 

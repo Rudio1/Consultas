@@ -2,20 +2,18 @@
 
 namespace App\Http\Controllers;
 use App\Models\Consultas;
+use App\Models\Cadastro;
 
 use Illuminate\Http\Request;
 
 class ConsultaController extends Controller
 {
-    public function consulta(Request $request){
-        $teste = Consultas::all();
-        // dd($teste);
-        return view('consulta', ['titulo'=> '(Consultas)', 'consultas_teste' => $teste]); 
+    public function consultaIndex (Request $request){
+        $consulta = Consultas::all();
+        return view('consulta', ['titulo'=> '(Consultas)', 'consulta' => $consulta]); 
     }
 
-    public function salvarConsulta(Request $request){
-
-        $dados = $request->except(('_token'));
+    public function enviarConsulta(Request $request){
 
         $regras = [
             'nome_paciente' => 'required',
@@ -29,7 +27,29 @@ class ConsultaController extends Controller
 
         $request->validate($regras, $feedback);  
         Consultas::create($request->all());
-        return redirect()->route('index');
+        return redirect()->route('site.index');
+    }
 
+    public function cadastroIndex(){
+        $cadastro = Cadastro::all();
+
+        return view('cadastrar-paciente', ['titulo' => 'cadastro', 'cadastro' => $cadastro]);
+    }
+
+    public function enviarCadastro(Request $request) {
+
+        $regras = [
+            'nome_cadastro' => 'required',
+            'data_cadastro' => 'required',
+            'valor_consulta' => 'required'
+        ];
+
+        $feedback = [
+            'required' => "Preencha o campo"
+        ];
+
+        $request->validate($regras, $feedback);
+        Cadastro::create($request->all());
+        return redirect()->route('site.index');
     }
 }

@@ -1,14 +1,17 @@
-<form action={{ route('teste.consulta') }} method="post">
+<form action={{ route('consulta.index') }} method="post">
     @csrf
         <h3>Nome do paciente</h3>
-        <input type="text" name="nome_paciente" id="input-nome-paciente" placeholder="Informe o nome do paciente">
-         {{ $errors->has('nome_paciente') ? $errors->first('nome_paciente') : '' }}
-        <br>
-
+    <select name="nome_cadastro">
+        <option value="">Paciente</option>
+        @foreach($consulta as $key => $consulta)
+            <option value="{{$consulta->id}}">{{$consulta->nome_cadastro}}</option>
+        @endforeach
+    </select>
+        <input type="text" name="nome_paciente">
         <p id="paragro-form">Data Da consulta</p>
         <input type="date" name="data_consulta">
         <br>
-         {{ $errors->has('data_consulta') ? $errors->first('data_consulta') : '' }}
+        {{ $errors->has('data_consulta') ? $errors->first('data_consulta') : '' }}
 
         <p id="paragro-form">Informe um pouco de como foi a sua consulta</p>
         <br>
