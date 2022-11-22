@@ -57,12 +57,30 @@ class ConsultaController extends Controller
 
     public function editarUsers($id){
         $editar = Cadastro::find($id);
-        // dd($editar);
+
 
         return view('editar', ['titulo' => 'Editar Paciente', 'editar' => $editar]);
     }
 
-    public function editarIndex(){
-        dd('aaa');
+
+
+    public function editarIndex(Request $request){
+
+        $msg = '';
+
+        if($request->input('_token') != '' && $request->input('id') != '') {
+            $cadastro = Cadastro::find($request->input('id'));
+            // dd($cadastro);
+            $update = $cadastro->update($request->all());
+            
+
+        if($update) {
+            $msg = 'Atualização realizado com sucesso';
+        } else {
+            $msg = 'Erro ao tentar atualizar o registro';
+        }
+    }
+
+        return redirect()->route('site.index');
     }
 }

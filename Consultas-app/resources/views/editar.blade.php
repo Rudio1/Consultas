@@ -7,7 +7,7 @@
             {{ $msg ?? '' }}
             <div style="width: 30%; margin-left: auto; margin-right: auto;">
                 <form method="post" action="{{ route('editar.index') }}">
-                    <input type="hidden" name="id" value="{{ $editar->nome_cadastro ?? '' }}">
+                    <input type="hidden" name="id" value="{{ $fornecedor->id ?? '' }}">
                     @csrf
                     <input type="text" name="nome" value="{{ $editar->nome_cadastro ?? old('nome_cadastro') }}" placeholder="nome_cadastro" class="borda-preta">
                     {{ $errors->has('nome_cadastro') ? $errors->first('nome_cadastro') : '' }}
