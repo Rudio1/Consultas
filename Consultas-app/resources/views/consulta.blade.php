@@ -5,7 +5,7 @@
 <body>
 
     <h1 id="h1-titulo">Preenchimento de paciente</h1>
-    @component('form.consulta', ['consulta' =>$consulta])
+    @component('form.consulta', ['consulta' =>$consulta, 'cadastro' => $cadastro])
     @endcomponent
     
     

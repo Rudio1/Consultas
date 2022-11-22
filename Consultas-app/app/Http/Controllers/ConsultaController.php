@@ -5,12 +5,14 @@ use App\Models\Consultas;
 use App\Models\Cadastro;
 
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\AssignOp\Concat;
 
 class ConsultaController extends Controller
 {
-    public function consultaIndex (Request $request){
+    public function consultaIndex (){
         $consulta = Consultas::all();
-        return view('consulta', ['titulo'=> '(Consultas)', 'consulta' => $consulta]); 
+        $cadastro = Cadastro::all();
+        return view('consulta', ['titulo' => 'Consulta', 'consulta' => $consulta, 'cadastro' => $cadastro]);
     }
 
     public function enviarConsulta(Request $request){
@@ -31,9 +33,9 @@ class ConsultaController extends Controller
     }
 
     public function cadastroIndex(){
+        $consulta = Consultas::all();
         $cadastro = Cadastro::all();
-
-        return view('cadastrar-paciente', ['titulo' => 'cadastro', 'cadastro' => $cadastro]);
+        return view('cadastrar-paciente', ['titulo' => 'cadastro', 'cadastro' => $cadastro, 'consulta' => $consulta]);
     }
 
     public function enviarCadastro(Request $request) {
@@ -51,5 +53,16 @@ class ConsultaController extends Controller
         $request->validate($regras, $feedback);
         Cadastro::create($request->all());
         return redirect()->route('site.index');
+    }
+
+    public function editarUsers($id){
+        $editar = Cadastro::find($id);
+        // dd($editar);
+
+        return view('editar', ['titulo' => 'Editar Paciente', 'editar' => $editar]);
+    }
+
+    public function editarIndex(){
+        dd('aaa');
     }
 }

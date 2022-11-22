@@ -1,13 +1,13 @@
-<form action={{ route('consulta.index') }} method="post">
+
+<form action={{route('consulta.index') }} method="post">
     @csrf
-        <h3>Nome do paciente</h3>
-    <select name="nome_cadastro">
+    <h3>Nome do paciente</h3>
+    <select name="nome_paciente">
         <option value="">Paciente</option>
-        @foreach($consulta as $key => $consulta)
-            <option value="{{$consulta->id}}">{{$consulta->nome_cadastro}}</option>
+        @foreach($cadastro as $key => $cadastrouser)
+            <option value="{{$cadastrouser->nome_cadastro}}">{{$cadastrouser->nome_cadastro}}</option>
         @endforeach
     </select>
-        <input type="text" name="nome_paciente">
         <p id="paragro-form">Data Da consulta</p>
         <input type="date" name="data_consulta">
         <br>

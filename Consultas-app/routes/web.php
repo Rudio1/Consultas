@@ -26,3 +26,7 @@ Route::post('cadastro', [ConsultaController::class, 'enviarCadastro'])->name('ca
 Route::get('consulta', [ConsultaController::class, 'consultaIndex'])->name('consulta.index');
 Route::post('consulta', [ConsultaController::class, 'enviarConsulta'])->name('consulta.index');
 
+Route::get('editar/adicionar', [ConsultaController::class, 'editarIndex'])->name('editar.index');
+Route::post('editar/adicionar', [ConsultaController::class, 'editarIndex'])->name('editar.index');
+Route::get('editar/{id}', [ConsultaController::class, 'editarUsers'])->name('editar.putindex');
+
