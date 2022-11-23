@@ -55,11 +55,10 @@ class ConsultaController extends Controller
         return redirect()->route('site.index');
     }
 
-    public function editarUsers($id){
+    public function editarUsers($id, $msg = ''){
         $editar = Cadastro::find($id);
 
-
-        return view('editar', ['titulo' => 'Editar Paciente', 'editar' => $editar]);
+        return view('editar', ['titulo' => 'testando' , 'editar' => $editar, 'msg' => $msg]);
     }
 
 
@@ -70,10 +69,7 @@ class ConsultaController extends Controller
 
         if($request->input('_token') != '' && $request->input('id') != '') {
             $cadastro = Cadastro::find($request->input('id'));
-            // dd($cadastro);
             $update = $cadastro->update($request->all());
-            
-
         if($update) {
             $msg = 'Atualização realizado com sucesso';
         } else {
@@ -81,6 +77,16 @@ class ConsultaController extends Controller
         }
     }
 
-        return redirect()->route('site.index');
+        return redirect()->route('editar.putindex', ['id' => $request->input('id'), 'msg' => $msg]);
+    }
+
+
+    public function listarPaciente(Request $request){
+        $paciente = Cadastro::where('nome_cadastro', 'like', '%'.$request->input('nome_cadastro').'%')
+        ->where('data_cadastro', 'like', '%'.$request->input('data_cadastro').'%')
+        ->where('valor_consulta', 'like', '%'.$request->input('valor_consulta').'%')
+        ->get();
+
+        return view('paciente',  ['paciente' => $paciente]);
     }
 }

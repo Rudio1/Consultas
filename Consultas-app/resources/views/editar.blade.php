@@ -18,7 +18,7 @@
                     <input type="text" name="uf" value="{{ $editar->valor_consulta ?? old('valor_consulta') }}" placeholder="valor_consulta" class="borda-preta">
                     {{ $errors->has('valor_consulta') ? $errors->first('valor_consulta') : '' }}
 
-                    <button type="submit" class="borda-preta">Cadastrar</button>
+                    <button type="submit" class="borda-preta">Editar</button>
                 </form>
             </div>
         </div>

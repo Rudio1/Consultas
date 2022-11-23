@@ -28,5 +28,7 @@ Route::post('consulta', [ConsultaController::class, 'enviarConsulta'])->name('co
 
 Route::get('editar/adicionar', [ConsultaController::class, 'editarIndex'])->name('editar.index');
 Route::post('editar/adicionar', [ConsultaController::class, 'editarIndex'])->name('editar.index');
-Route::get('editar/{id}', [ConsultaController::class, 'editarUsers'])->name('editar.putindex');
+Route::get('/editar/{id}', [ConsultaController::class, 'editarUsers'])->name('editar.putindex');
+
+Route::get('pacientes-cadastrados', [ConsultaController::class, 'listarPaciente'])->name('listar.paciente');
 
